@@ -3,19 +3,19 @@ Vagrant.configure("2") do |config|
     deployer_config.vm.provider "virtualbox" do |vb|
       vb.customize ["modifyvm", :id, "--name", "deployer", "--memory", "512"]
     end
-    deployer_config.vm.box = "centos64minimal"
+    deployer_config.vm.box = "centos64minimal_ruby_git"
     deployer_config.vm.hostname = "deployer"
     deployer_config.vm :forwarded_port, host: 22, guest: 2222
     deployer_config.vm :forwarded_port, host: 80, guest: 4567
     deployer_config.vm.network :private_network, ip: "33.33.13.37"
   end
-  config.vm.define :app do |app_config|
-    app_config.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--name", "app", "--memory", "512"]
-    end
-    app_config.vm.box = "centos64minimal"
-    app_config.vm.hostname = "app"
-    app_config.vm :forwarded_port, host: 22, guest: 2222
-    app_config.vm.network :private_network, ip: "33.33.13.38"
-  end
+  #config.vm.define :app do |app_config|
+  #  app_config.vm.provider "virtualbox" do |vb|
+  #    vb.customize ["modifyvm", :id, "--name", "app", "--memory", "512"]
+  #  end
+  #  app_config.vm.box = "centos64minimal"
+  #  app_config.vm.hostname = "app"
+  #  app_config.vm :forwarded_port, host: 22, guest: 2222
+  #  app_config.vm.network :private_network, ip: "33.33.13.38"
+  #end
 end

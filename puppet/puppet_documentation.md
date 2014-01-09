@@ -11,3 +11,9 @@ It looks as though installing from source with the default minimal packages. I'm
 Created "puppet" user with no home directory.
 Installed the puppet gem (v. 2.7.12)
 Played with puppet for a bit, then wrote a manifest to a) create the correct /etc/yum.repos.d/nginx.repo file and use yum to install nginx with it.
+Tested, and nginx is running, though I don't have the vagrant port-forwarding set up to see it in my browser.
+Went into the second vm, did the ruby and git installs and tested the trivial nginx manifest.
+
+Day 2.
+Blew away my existing vms and recreated them, installed ruby 2 from source and git, then packaged a new vagrant box called centos64minimal_ruby_git for further use.
+Pulled down the trivial-nginx manifest and tested nginx install.
