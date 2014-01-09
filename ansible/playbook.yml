@@ -1,0 +1,7 @@
+tasks:
+- name: ensure ruby is at the latest version 
+  yum: pkg=ruby state=latest
+  sudo: yes
+- name: ensure java is at the latest version
+  yum: pkg=java state=latest
+  sudo: yes

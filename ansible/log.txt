@@ -5,5 +5,17 @@
  
 2014-01-09
 
-11:00-11:50
-
+11:00-16:30
+ * vagrant init
+ * edit Vagrantfile
+ * create simple playbook.yml
+ * vagrant up # darn, need to install Ansible
+ * install ansible http://dhorbach.blogspot.ca/2013/08/working-with-ansible-in-eclipse-and.html
+ * Vagrant still doesn't see it, give up on that
+ * start installing blacklight from shell provisioning
+ * install ruby http://techblogthing.blogspot.ca/2012/11/complete-guide-to-install-ruby-193-on.html
+  * slow on reload?
+ * quick start blacklight https://github.com/projectblacklight/blacklight/wiki/Quickstart
+ 
+ * diversion, Neil shared a CentOS 6.5 ISO, trying in virtualbox
+  * darn!  This kernel requires an x86-64 CPU, but only detected an i686 CPU.

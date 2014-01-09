@@ -7,12 +7,12 @@ Introduction
 * yml playbook (python)
 * install from
  * os package
- * git
+ * git (seems common)
  * python package index
 * cmd
  * ansible
   * ping
- * ansible-playbook basic-playbook-1.yml
+ * ansible-playbook -i hosts basic-playbook-1.yml
   * shows changed
   * can override vars on command line
 * host inventory (local or hosted)
@@ -24,7 +24,7 @@ Introduction
   * plays
    * tasks 
     * top down execution
-	* modules: yum, service, template
+	* modules: yum, service, template, etc
 * interacts with servers over ssh, respects role permissions
 * Currently Ansible can be from any machine with Python 2.6 installed (Windows isn’t supported for the control machine).
  * This includes Red Hat, Debian, CentOS, OS X, any of the BSDs, and so on.
@@ -48,4 +48,11 @@ Details
  * Eucalyptus Cloud
  * KVM
  * CloudStack
+ 
+* Control Machine
+ * This includes Red Hat, Debian, CentOS, OS X, any of the BSDs, and so on.
+ 
+ * Network Effect
+  * openssh :22
+  * always know servers in advance?
 
