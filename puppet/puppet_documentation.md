@@ -16,4 +16,5 @@ Went into the second vm, did the ruby and git installs and tested the trivial ng
 
 Day 2.
 Blew away my existing vms and recreated them, installed ruby 2 from source and git, then packaged a new vagrant box called centos64minimal_ruby_git for further use.
-Pulled down the trivial-nginx manifest and tested nginx install.
+Pulled down the trivial-nginx manifest and tested nginx install. Worked fine (have to remember to run as sudo). 
+
