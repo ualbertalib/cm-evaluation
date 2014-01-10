@@ -20,11 +20,11 @@ Introduction
    * could be purpose, location, etc
  * server webserver-1.example.com
  * or ranges webserver-[a-b].example.com
- * playbooks
-  * plays
-   * tasks 
-    * top down execution
-	* modules: yum, service, template, etc
+* playbooks
+ * plays
+  * tasks 
+   * top down execution
+   * modules: yum, service, template, etc
 * interacts with servers over ssh, respects role permissions
 * Currently Ansible can be from any machine with Python 2.6 installed (Windows isn’t supported for the control machine).
  * This includes Red Hat, Debian, CentOS, OS X, any of the BSDs, and so on.
@@ -52,7 +52,7 @@ Details
 * Control Machine
  * This includes Red Hat, Debian, CentOS, OS X, any of the BSDs, and so on.
  
- * Network Effect
-  * openssh :22
-  * always know servers in advance?
+* Network Effect
+ * openssh :22
+ * always know servers in advance?
 

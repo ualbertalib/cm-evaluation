@@ -19,3 +19,6 @@
  
  * diversion, Neil shared a CentOS 6.5 ISO, trying in virtualbox
   * darn!  This kernel requires an x86-64 CPU, but only detected an i686 CPU.
+
+ 2014-01-10
+  * test.sh and blacklight.sh (pre-requisits)
