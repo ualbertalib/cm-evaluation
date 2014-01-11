@@ -60,6 +60,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  ansible.playbook = "playbook.yml"
   #end
 
-  config.vm.provision :shell, :path => "blacklight.sh"
+  config.vm.provision :shell, :path => "golden.sh"
 
 end

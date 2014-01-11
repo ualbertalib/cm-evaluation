@@ -32,7 +32,9 @@ Introduction
 Getting started 
 ===============
 
-vagrant up
+vagrant up	# builds a [golden](golden.txt) CentOS box
+./blacklight.sh	#installs blacklight
+./test.sh 	# tests to see if dependencies are installed
 
 Requires
 --------

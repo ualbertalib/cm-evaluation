@@ -1,6 +1,6 @@
 #preparing packages
 sudo yum groupinstall 'Development Tools'
-sudo yum -y install wget zlib1g-dev zlib-devel openssl-devel java
+sudo yum -y install zlib-devel openssl-devel java
 #!/bin/sh
 
 #compiling libyaml
