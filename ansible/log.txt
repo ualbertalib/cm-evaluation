@@ -1,8 +1,24 @@
-2014-01-07
-
-10:15-10:40
- * introduction to Ansible [http://www.ansibleworks.com/configuration-management/]
+2014-02-04
+PM
+ * finish blacklight from shell
  
+2014-01-24
+PM
+ * looking at golden again network interfaces issue
+ * blacklight from shell
+
+2014-01-21
+PM
+ * continued install blacklight quickstart using shell script (able to get web app to start)
+
+2014-01-20
+PM
+ * created 'gold' image from Neils required packages list to \\libroot\ITS_Share\Tricia\vagrantboxes
+
+2014-01-10
+PM
+ * test.sh and blacklight.sh (pre-requisits)
+
 2014-01-09
 
 11:00-16:30
@@ -20,5 +36,10 @@
  * diversion, Neil shared a CentOS 6.5 ISO, trying in virtualbox
   * darn!  This kernel requires an x86-64 CPU, but only detected an i686 CPU.
 
- 2014-01-10
-  * test.sh and blacklight.sh (pre-requisits)
+2014-01-07
+
+10:15-10:40
+ * introduction to Ansible [http://www.ansibleworks.com/configuration-management/]
+ 
+
+  

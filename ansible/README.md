@@ -26,15 +26,16 @@ Introduction
    * top down execution
    * modules: yum, service, template, etc
 * interacts with servers over ssh, respects role permissions
-* Currently Ansible can be from any machine with Python 2.6 installed (Windows isn’t supported for the control machine).
+* Currently Ansible can be from any machine with Python 2.6 installed (Windows isnï¿½t supported for the control machine).
  * This includes Red Hat, Debian, CentOS, OS X, any of the BSDs, and so on.
 
 Getting started 
 ===============
 
-vagrant up	# builds a [golden](golden.txt) CentOS box
-./blacklight.sh	#installs blacklight
-./test.sh 	# tests to see if dependencies are installed
+vagrant box add centos6.5 /path/to/golden_centos65-x86_64.box
+vagrant up	# quick installs blacklight
+(vagrant ssh)
+/vagrant/test.sh 	# tests to see if dependencies are installed
 
 Requires
 --------
