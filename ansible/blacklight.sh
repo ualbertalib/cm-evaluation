@@ -82,13 +82,14 @@ if [ ! -f /root/my_app/README.rdoc ]; then
 	/usr/local/bin/rails new my_app
 	cd my_app
 	echo gem \'blacklight\' >> Gemfile
+	echo gem \'therubyracer\' >> Gemfile
 	/usr/local/bin/bundle install
 else
 	cd /root/my_app
 fi
 
 #blacklight with devise for authentication
-/usr/local/bin/rails generate blacklight --devise
+/usr/local/bin/rails generate blacklight:install --devise --marc
 
 #create blacklight db
 /usr/local/bin/rake db:migrate
