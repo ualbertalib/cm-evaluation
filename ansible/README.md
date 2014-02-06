@@ -26,14 +26,14 @@ Introduction
    * top down execution
    * modules: yum, service, template, etc
 * interacts with servers over ssh, respects role permissions
-* Currently Ansible can be from any machine with Python 2.6 installed (Windows isn�t supported for the control machine).
+* Currently Ansible can be from any machine with Python 2.6 installed (Windows isn't supported for the control machine).
  * This includes Red Hat, Debian, CentOS, OS X, any of the BSDs, and so on.
 
 Getting started 
 ===============
 
 vagrant box add centos6.5 /path/to/golden_centos65-x86_64.box
-vagrant up	# quick installs blacklight
+vagrant up	# creates a control and node vm
 (vagrant ssh)
 /vagrant/test.sh 	# tests to see if dependencies are installed
 
@@ -58,4 +58,5 @@ Details
 * Network Effect
  * openssh :22
  * always know servers in advance?
+ * external way to get ssh credentials on box
 

@@ -1,3 +1,14 @@
+2014-02-06
+ * ssh between vms http://jayunit100.blogspot.ca/2013/09/some-lessons-learned-on-vagrant-with.html
+ 
+2014-02-05
+ * finish blacklight from shell script (Blacklight 5.0.1)
+ * working on ansible control/node
+ * references
+  * http://julien.ponge.org/blog/scalable-and-understandable-provisioning-with-ansible-and-vagrant/
+  * http://www.stefanwienert.net/blog/2013/09/28/ansible-server-configuration-the-easy-way/
+ * ssh-keygen???  need authentication between boxes
+
 2014-02-04
 PM
  * finish blacklight from shell
