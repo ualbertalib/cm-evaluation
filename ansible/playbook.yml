@@ -1,7 +1,118 @@
-tasks:
-- name: ensure ruby is at the latest version 
-  yum: pkg=ruby state=latest
-  sudo: yes
-- name: ensure java is at the latest version
-  yum: pkg=java state=latest
-  sudo: yes
+---
+# this is an annotated example of some features available in playbooks
+# it shows how to make sure packages are updated, how to make sure
+# services are running, and how to template files.  It also demos
+# change handlers that can restart things (or trigger other actions)
+# when resources change.  For more advanced examples, see example2.yml
+
+# on all hosts, run as the user root...
+
+- name: setup server play
+  hosts: all
+  user: vagrant
+
+  # define the tasks that are part of this play...
+
+  tasks:
+  # preparing packages
+  - name: install Development Tools
+    action: yum name='@development' state=latest
+    sudo: yes
+
+  #packages.library.ualberta.ca
+  - name: make packages.library.ualberta.ca available
+    copy: src=/vagrant/rhel6extras.repo dest=/etc/yum.repos.d/rhel6extras.repo
+    sudo: yes
+      
+  # make sure java is installed at the latest version
+  - name: install java
+    action: yum pkg={{ item }} state=latest
+    sudo: yes
+    with_items:
+      - java-1.6.0-sun
+      - java-1.6.0-sun-devel
+      
+  # ruby dependencies
+  - name: yum install ruby depends
+    sudo: yes
+    action: yum pkg={{ item }} state=latest
+    with_items:
+      - wget
+      - npm
+      - sqlite-devel
+      - httpd-devel
+      - openssl-devel
+      - zlib-devel
+      - curl-devel
+      - expat-devel
+      - gettext-devel
+      - patch
+      - readline
+      - readline-devel
+      - zlib
+      - zlib-devel
+      - libyaml-devel
+      - libffi-devel
+      - bzip2
+      - mysql-server
+      - openssl-devel
+
+  # install YAML
+  - name: download YAML
+    shell: creates=/tmp/yaml-0.1.4 wget -O - http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz | tar -xz -C /tmp
+
+  - name: install YAML
+    command: creates=/usr/local/lib/libyaml.a chdir=/tmp/yaml-0.1.4 {{ item }}
+    sudo: yes
+    with_items:
+      - ./configure --prefix=/usr/local
+      - make
+      - sudo make install
+      
+  #install ruby
+  - name: download ruby
+    shell: creates=/tmp/ruby-1.9.3-p484 wget -O - http://cache.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p484.tar.gz | tar -xz -C /tmp
+    
+  - name: install ruby
+    command: creates=/usr/local/bin/ruby chdir=/tmp/ruby-1.9.3-p484 {{ item }}
+    with_items:
+      - ./configure
+      - make
+      - sudo make install
+        
+  #install rubygems
+  - name: download rubygems
+    shell: creates=/tmp/rubygems-2.1.11 wget -O - http://production.cf.rubygems.org/rubygems/rubygems-2.1.11.tgz | tar -xz -C /tmp
+    
+  - name: install rubygems
+    command: creates=/usr/local/bin/gem chdir=/tmp/rubygems-2.1.11 sudo ruby setup.rb --no-document
+    
+  #gems installs
+  - name: install required gems
+    command: creates=/usr/local/lib/ruby/gems/1.9.1/gems/{{ item }}-* sudo /usr/local/bin/gem install {{ item }} --no-ri --no-rdoc
+    with_items:
+      - bundler
+      - rails
+      - devise-guests
+      
+  #my_app create
+  - name: create my_app
+    command: creates=/home/vagrant/my_app /usr/local/bin/rails new my_app
+  - name: customize my_app
+    lineinfile: destfile=/home/vagrant/my_app/Gemfile line="{{ item }}"
+    with_items:
+      - gem 'blacklight'
+      - gem 'therubyracer'
+  - name: install new bundles    
+    command: chdir=/home/vagrant/my_app /usr/local/bin/bundle install
+      
+  - name: install blacklight with devise for authentication
+    command:  chdir=/home/vagrant/my_app /usr/local/bin/rails generate blacklight:install --devise --marc
+      
+  - name: create blacklight db
+    command: chdir=/home/vagrant/my_app /usr/local/bin/rake db:migrate
+  
+  - name: install solr
+    command: creates=/home/vagrant/my_app/jetty/start.jar chdir=/home/vagrant/my_app /usr/local/bin/rails generate blacklight:jetty
+      
+  

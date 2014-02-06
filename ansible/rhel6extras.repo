@@ -1,0 +1,10 @@
+#
+# rhel6extras
+#
+
+[rhel6extras]
+name=Custom packages for RHEL and CentOS 6 - $basearch
+baseurl=http://packages.library.ualberta.ca/mrepo/rhel6-x86_64/RPMS.extras/
+failovermethod=priority
+enabled=1
+gpgcheck=0

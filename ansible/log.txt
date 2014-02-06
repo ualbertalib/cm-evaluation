@@ -1,5 +1,10 @@
 2014-02-06
  * ssh between vms http://jayunit100.blogspot.ca/2013/09/some-lessons-learned-on-vagrant-with.html
+ * TODO create inventory with permissions: 4 -rw-r--r-- 1 root root 965 Dec 28 19:00 /etc/ansible/hosts
+ * success installing ruby using ansible, super easy!
+ * installed YEdit for Eclipse, yml formatting errors becoming road block
+ * https://gist.github.com/marktheunissen/2979474
+ * success creating blacklight app, few more steps to get it to start 
  
 2014-02-05
  * finish blacklight from shell script (Blacklight 5.0.1)

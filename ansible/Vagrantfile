@@ -12,6 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     control.vm.hostname = "ansible-server"
     control.vm.network :private_network, ip: "192.168.33.101"
     control.vm.provision "shell", inline: "sudo yum -y install ansible"
+    #config.vm.synced_folder "ansible/", "/etc/ansible"
+    #control.vm.provision "shell", inline: "chmod +x /etc/ansible/hosts"
   end
   
   config.vm.define "node" do |node|
