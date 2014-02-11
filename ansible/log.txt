@@ -1,3 +1,11 @@
+2014-02-11
+ * jetty.sh in blacklight-jetty
+ * finish ansible playbook
+ * rails server is kind of a cheat
+
+2014-02-07
+ * background process wait, make service (solr)
+
 2014-02-06
  * ssh between vms http://jayunit100.blogspot.ca/2013/09/some-lessons-learned-on-vagrant-with.html
  * TODO create inventory with permissions: 4 -rw-r--r-- 1 root root 965 Dec 28 19:00 /etc/ansible/hosts

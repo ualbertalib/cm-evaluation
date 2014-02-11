@@ -44,6 +44,12 @@ Vagrant (with vagrant-hostupdater)
 Details
 =======
 
+* Functionality
+ * Modules for normal things http://docs.ansible.com/list_of_all_modules.html
+  * apt, yum, etc
+  * gem
+  * copy
+
 * Cloud Integration
  * VMware
  * OpenStack

@@ -85,11 +85,13 @@
     shell: creates=/tmp/rubygems-2.1.11 wget -O - http://production.cf.rubygems.org/rubygems/rubygems-2.1.11.tgz | tar -xz -C /tmp
     
   - name: install rubygems
-    command: creates=/usr/local/bin/gem chdir=/tmp/rubygems-2.1.11 sudo ruby setup.rb --no-document
+    command: creates=/usr/local/bin/gem chdir=/tmp/rubygems-2.1.11 /usr/local/bin/ruby setup.rb --no-document
+    sudo: yes
     
   #gems installs
   - name: install required gems
-    command: creates=/usr/local/lib/ruby/gems/1.9.1/gems/{{ item }}-* sudo /usr/local/bin/gem install {{ item }} --no-ri --no-rdoc
+    command: /usr/local/bin/gem install {{item}} --no-ri --no-rdoc
+    sudo: yes
     with_items:
       - bundler
       - rails
@@ -107,12 +109,32 @@
     command: chdir=/home/vagrant/my_app /usr/local/bin/bundle install
       
   - name: install blacklight with devise for authentication
-    command:  chdir=/home/vagrant/my_app /usr/local/bin/rails generate blacklight:install --devise --marc
+    command:  chdir=/home/vagrant/my_app /usr/local/bin/rails generate blacklight:install --devise --marc --skip
       
   - name: create blacklight db
     command: chdir=/home/vagrant/my_app /usr/local/bin/rake db:migrate
   
-  - name: install solr
+  # install solr as service
+  - name: generate solr
     command: creates=/home/vagrant/my_app/jetty/start.jar chdir=/home/vagrant/my_app /usr/local/bin/rails generate blacklight:jetty
-      
+    
+  - name: copy jetty.sh
+    copy: src=/vagrant/jetty.sh dest=/etc/init.d/jetty owner=root group=root mode=0755
+    sudo: yes
+    
+  - name: copy jetty.conf
+    copy: src=/vagrant/jetty.conf dest=/etc/default/jetty owner=root group=root mode=0755
+    sudo: yes
+
+  - name: start solr/jetty
+    service:  name=jetty state=restarted
+    sudo: yes
+    
+  # index some data
+  - name: index marc sample
+    command: chdir=/home/vagrant/my_app/jetty /usr/local/bin/rake solr:marc:index_test_data
+    
+  # start rails server
+  - name: start rails server
+    command: chdir=/home/vagrant/my_app/jetty /usr/local/bin/rails server
   
