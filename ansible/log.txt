@@ -1,3 +1,8 @@
+2014-02-12
+ * met about cm evaluation
+ * ruby 2.0.0.p353
+ * dependency managers for ruby cm engines capistrano, librarian, berkshelf
+
 2014-02-11
  * jetty.sh in blacklight-jetty
  * finish ansible playbook
