@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     control.vm.box_url =  "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box" 
     control.vm.hostname = "ansible-server"
     control.vm.network :private_network, ip: "192.168.33.101"
-    control.vm.provision "shell", inline: "sudo yum -y install ansible"
+    control.vm.provision "shell", inline: "sudo yum -y install ansible vim"
     #config.vm.synced_folder "ansible/", "/etc/ansible"
     #control.vm.provision "shell", inline: "chmod +x /etc/ansible/hosts"
   end
